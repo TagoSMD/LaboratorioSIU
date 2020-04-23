@@ -17,6 +17,7 @@ public class Contenedor extends javax.swing.JFrame {
     
      private MantenimientoAlumnos nuevaVentana1;
      private MantenimientoFacultad nuevaVentana2;
+     
     public Contenedor() {
         initComponents();
     }
@@ -120,7 +121,7 @@ public class Contenedor extends javax.swing.JFrame {
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         // TODO add your handling code here:
         nuevaVentana2= new MantenimientoFacultad();
-        jDesktopPanel.add (nuevaVentana2);
+        jDesktopPane1.add (nuevaVentana2);
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     /**

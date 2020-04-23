@@ -148,8 +148,8 @@ public class MantenimientoFacultad extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Codigo que permite insertar registros en al base de datos
         try{
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/alumnosm", "root", "kingcobra123DA");
-            PreparedStatement pst = cn.prepareStatement("insert into alumnos values(?,?,?.?)");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/alumnosm", "root", "");
+            PreparedStatement pst = cn.prepareStatement("insert into Facultad values(?,?,?.?)");
 
             pst.setString(1, "0");
             pst.setString(2, txt_codigo.getText().trim());
@@ -172,7 +172,7 @@ public class MantenimientoFacultad extends javax.swing.JInternalFrame {
         try {
             String ID = txt_buscar.getText().trim();
 
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/alumnosm", "root", "kingcobra123DA");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/alumnosm", "root", "");
             PreparedStatement pst = cn.prepareStatement("update Facultad set codigo_facultad= ?, nombre_facultad = ?, estado_facultad = ?, where ID = " + ID);
             //NombreMaestro = ?,DirrecionMaestro = ? ,TelefonoMaestro = ? ,CorreoEletronicoMaestro = ? ,EstatusMaestro = ?
             pst.setString(1, "0");
@@ -191,7 +191,7 @@ public class MantenimientoFacultad extends javax.swing.JInternalFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         //Codigo que permite borrar registros en la base de datos
         try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/alumnosm", "root", "kingcobra123DA");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/alumnosm", "root", "");
             PreparedStatement pst = cn.prepareStatement("delete from Facultad where ID = ?");
 
             pst.setString(1, txt_buscar.getText().trim());
@@ -211,8 +211,8 @@ public class MantenimientoFacultad extends javax.swing.JInternalFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         //Codigo que permite consultar registros en la base de datos
         try{
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/alumnosm", "root", "kingcobra123DA");
-            PreparedStatement pst = cn.prepareStatement("select * from facultad where ID = ?");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/alumnosm", "root", "");
+            PreparedStatement pst = cn.prepareStatement("select * from Facultad where ID = ?");
             pst.setString(1, txt_buscar.getText().trim());
 
             ResultSet rs = pst.executeQuery();
@@ -221,10 +221,6 @@ public class MantenimientoFacultad extends javax.swing.JInternalFrame {
                 txt_codigo.setText(rs.getString("carnet_alumnos"));
                 txt_nombre.setText(rs.getString("nombre_alumnos"));
                 txt_estado.setText(rs.getString("dirreccion_alumnos"));
-                txt_telefono.setText(rs.getString("telefono_alumnos"));
-                txt_correo.setText(rs.getString("correo_alumnos"));
-                txt_estatus.setText(rs.getString("estatus_alumnos"));
-
             } else {
                 JOptionPane.showMessageDialog(null, "Alumno no registrado.");
             }
