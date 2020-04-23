@@ -5,15 +5,20 @@
  */
 package laboratoriosiu;
 
+
+
+
 /**
  *
  * @author TagoKG
  */
 public class Contenedor extends javax.swing.JFrame {
-
+private Mantenimiento_Maestro nuevaVentana2;
     /**
      * Creates new form Contenedor
      */
+
+    
     public Contenedor() {
         initComponents();
     }
@@ -33,7 +38,8 @@ public class Contenedor extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        maestros = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
@@ -61,8 +67,16 @@ public class Contenedor extends javax.swing.JFrame {
 
         jMenu1.setText("File");
 
-        jMenuItem1.setText("jMenuItem1");
-        jMenu1.add(jMenuItem1);
+        jMenuItem4.setText("jMenuItem4");
+        jMenu1.add(jMenuItem4);
+
+        maestros.setText("Maestros");
+        maestros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                maestrosActionPerformed(evt);
+            }
+        });
+        jMenu1.add(maestros);
 
         jMenuBar1.add(jMenu1);
 
@@ -93,6 +107,11 @@ public class Contenedor extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void maestrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maestrosActionPerformed
+    nuevaVentana2=new Mantenimiento_Maestro();
+     jDesktopPane1.add (nuevaVentana2);
+    }//GEN-LAST:event_maestrosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -137,8 +156,9 @@ public class Contenedor extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem maestros;
     // End of variables declaration//GEN-END:variables
 }
