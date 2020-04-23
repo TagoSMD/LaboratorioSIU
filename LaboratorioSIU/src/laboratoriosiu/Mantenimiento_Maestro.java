@@ -184,7 +184,7 @@ public class Mantenimiento_Maestro extends javax.swing.JInternalFrame {
         //Codigo que permite consultar registros en la base de datos
         try{
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/labUSI", "root", "");
-            PreparedStatement pst = cn.prepareStatement("select * from MAESTROS where ID = ?");
+            PreparedStatement pst = cn.prepareStatement("select * from maestros where ID = ?");
             pst.setString(1, txt_buscar.getText().trim());
 
             ResultSet rs = pst.executeQuery();
@@ -209,7 +209,7 @@ public class Mantenimiento_Maestro extends javax.swing.JInternalFrame {
         //Codigo que permite insertar registros en al base de datos
         try{
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/labUSI", "root", "");
-            PreparedStatement pst = cn.prepareStatement("insert into MAESTROS values(?,?,?,?,?,?,?)");
+            PreparedStatement pst = cn.prepareStatement("insert into maestros values(?,?,?,?,?,?)");
             pst.setString(1, "0");
             pst.setString(2, txt_codigo.getText().trim());
             pst.setString(3, txt_nombre.getText().trim());
@@ -239,7 +239,7 @@ public class Mantenimiento_Maestro extends javax.swing.JInternalFrame {
             String ID = txt_buscar.getText().trim();
 
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/labUSI", "root", "");
-            PreparedStatement pst = cn.prepareStatement("update MAESTROS set CodigoMaestro = ?, NombreMaestro = ?, DireccionMaestro = ?, TelefonoMaestro = ?, CorreoMaestro = ?, EstatusMaestro = ? where ID = " + ID);
+            PreparedStatement pst = cn.prepareStatement("update maestros set CodigoMaestro = ?, NombreMaestro = ?, DireccionMaestro = ?, TelefonoMaestro = ?, CorreoMaestro = ?, EstatusMaestro = ? where ID = " + ID);
 
             pst.setString(1, "0");
             pst.setString(1, txt_codigo.getText().trim());
@@ -262,7 +262,7 @@ public class Mantenimiento_Maestro extends javax.swing.JInternalFrame {
         //Codigo que permite borrar registros en la base de datos
         try {
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/labUSI", "root", "");
-            PreparedStatement pst = cn.prepareStatement("delete from MAESTROS  where CodigoMaestro = ?");
+            PreparedStatement pst = cn.prepareStatement("delete from maestros  where CodigoMaestro = ?");
 
             pst.setString(1, txt_buscar.getText().trim());
             pst.executeUpdate();
