@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -50,6 +51,12 @@ public class MantenimientoAlumnos extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txt_carnet = new javax.swing.JTextField();
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setVisible(true);
 
         jLabel2.setText("Nombre Alumnos");
 
@@ -186,7 +193,7 @@ public class MantenimientoAlumnos extends javax.swing.JInternalFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         //Codigo que permite insertar registros en al base de datos
         try{
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/alumnos1", "root", "kingcobra123DA");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/alumnosm", "root", "kingcobra123DA");
             PreparedStatement pst = cn.prepareStatement("insert into alumnos values(?,?,?,?,?,?,?)");
 
             pst.setString(1, "0");
@@ -216,10 +223,10 @@ public class MantenimientoAlumnos extends javax.swing.JInternalFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //Codigo que permite actualizar registros en la base de datos
         try {
-            String ID = txt_buscar.getText().trim();
+            String ID = txt_buscar.getText().trim(); 
 
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/alumnos1", "root", "kingcobra123DA");
-            PreparedStatement pst = cn.prepareStatement("update alumnos set CodigoMaestro = ?, NombreMaestro = ?, DirrecionMaestro = ?,TelefonoMaestro = ? ,CorreoEletronicoMaestro = ? ,EstatusMaestro = ?   where ID = " + ID);
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/alumnosm", "root", "kingcobra123DA");
+            PreparedStatement pst = cn.prepareStatement("update alumnos set carnet_alumnos = ?, nombre_alumnos = ?, dirreccion_alumnos = ?,telefono_alumnos = ? ,correo_alumnos = ? ,estatus_alumnos = ?   where ID = " + ID);
             //NombreMaestro = ?,DirrecionMaestro = ? ,TelefonoMaestro = ? ,CorreoEletronicoMaestro = ? ,EstatusMaestro = ?
             pst.setString(1, "0");
             pst.setString(1, txt_carnet.getText().trim());
@@ -231,7 +238,7 @@ public class MantenimientoAlumnos extends javax.swing.JInternalFrame {
 
             pst.executeUpdate();
 
-            label_status.setText("Modificación exitosa.");
+//            label_status.setText("Modificación exitosa.");
 
         } catch (Exception e) {
         }
@@ -241,7 +248,7 @@ public class MantenimientoAlumnos extends javax.swing.JInternalFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         //Codigo que permite borrar registros en la base de datos
         try {
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/alumnos1", "root", "kingcobra123DA");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/alumnosm", "root", "kingcobra123DA");
             PreparedStatement pst = cn.prepareStatement("delete from alumnos where ID = ?");
 
             pst.setString(1, txt_buscar.getText().trim());
@@ -256,7 +263,7 @@ public class MantenimientoAlumnos extends javax.swing.JInternalFrame {
 
             txt_buscar.setText("");
 
-            label_status.setText("Registro eliminado.");
+            //label_status.setText("Registro eliminado.");
 
         } catch (Exception e) {
         }
@@ -266,19 +273,19 @@ public class MantenimientoAlumnos extends javax.swing.JInternalFrame {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         //Codigo que permite consultar registros en la base de datos
         try{
-            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/alumnos1", "root", "kingcobra123DA");
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/alumnosm", "root", "kingcobra123DA");
             PreparedStatement pst = cn.prepareStatement("select * from alumnos where ID = ?");
             pst.setString(1, txt_buscar.getText().trim());
 
             ResultSet rs = pst.executeQuery();
 
             if(rs.next()){
-                txt_carnet.setText(rs.getString("CodigoMaestro"));
-                txt_nombre.setText(rs.getString("NombreMaestro"));
-                txt_dirrecion.setText(rs.getString("DirrecionMaestro"));
-                txt_telefono.setText(rs.getString("TelefonoMaestro"));
-                txt_correo.setText(rs.getString("CorreoEletronicoMaestro"));
-                txt_estatus.setText(rs.getString("EstatusMaestro"));
+                txt_carnet.setText(rs.getString("carnet_alumnos"));
+                txt_nombre.setText(rs.getString("nombre_alumnos"));
+                txt_dirrecion.setText(rs.getString("dirreccion_alumnos"));
+                txt_telefono.setText(rs.getString("telefono_alumnos"));
+                txt_correo.setText(rs.getString("correo_alumnos"));
+                txt_estatus.setText(rs.getString("estatus_alumnos"));
 
             } else {
                 JOptionPane.showMessageDialog(null, "Alumno no registrado.");

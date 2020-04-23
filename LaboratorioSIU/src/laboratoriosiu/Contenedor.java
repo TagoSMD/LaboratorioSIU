@@ -14,6 +14,8 @@ public class Contenedor extends javax.swing.JFrame {
     /**
      * Creates new form Contenedor
      */
+    
+     private MantenimientoAlumnos nuevaVentana1;
     public Contenedor() {
         initComponents();
     }
@@ -61,7 +63,12 @@ public class Contenedor extends javax.swing.JFrame {
 
         jMenu1.setText("File");
 
-        jMenuItem1.setText("jMenuItem1");
+        jMenuItem1.setText("MantenimientoAlumnos");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
@@ -93,6 +100,12 @@ public class Contenedor extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+             nuevaVentana1 = new MantenimientoAlumnos();
+        jDesktopPane1.add (nuevaVentana1);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
