@@ -209,7 +209,7 @@ public class Mantenimiento_Maestro extends javax.swing.JInternalFrame {
         //Codigo que permite insertar registros en al base de datos
         try{
             Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/labUSI", "root", "");
-            PreparedStatement pst = cn.prepareStatement("insert into maestros values(?,?,?,?,?,?)");
+            PreparedStatement pst = cn.prepareStatement("insert into maestros values(?,?,?,?,?,?,?)");
             pst.setString(1, "0");
             pst.setString(2, txt_codigo.getText().trim());
             pst.setString(3, txt_nombre.getText().trim());
